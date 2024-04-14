@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Login from './components/Login';
+import { Main } from './components/Main';
+import View from './components/View';
+import Admin_main from './components/Admin_main';
+import Admin from './components/Admin';
+import Addemp from './components/Addemp';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+      <Route path={'/'} element={<Login/>}></Route>
+      <Route path='/view' element={<Main child={<View/>}/>}>View Employee</Route>
+      <Route path='/admin' element={<Admin_main child={<Admin/>}/>}> Employee</Route>
+      <Route path='/add' element={<Admin_main child={<Addemp method="post" data={{Name:'',ID:'',Position:'',Location:'',Salary:'',Username:'',Password:''}} />}/>}>add Employee</Route>
+      </Routes>
     </div>
   );
 }
